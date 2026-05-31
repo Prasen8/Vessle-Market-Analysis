@@ -67,12 +67,7 @@ Frontend runs at: http://localhost:3000
 
 ---
 
-## Login Credentials
 
-| Role  | Username | Password  | Access                          |
-|-------|----------|-----------|---------------------------------|
-| Admin | admin    | admin123  | Full access including data entry |
-| User  | user     | user123   | Read-only (no data entry)       |
 
 ---
 
