@@ -1,16 +1,18 @@
 import os
 from pathlib import Path
+
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Security
+# SECURITY
+
 SECRET_KEY = os.environ.get(
     "SECRET_KEY",
     "django-insecure-vessel-market-secret-key-change-in-production"
 )
 
-DEBUG = os.environ.get("DEBUG", "True") == "True"
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -18,7 +20,8 @@ ALLOWED_HOSTS = [
     ".onrender.com",
 ]
 
-# Applications
+# APPLICATIONS
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -34,7 +37,8 @@ INSTALLED_APPS = [
     'market',
 ]
 
-# Middleware
+# MIDDLEWARE
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 
@@ -69,42 +73,37 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'vessel_project.wsgi.application'
 
-# Database
-DATABASE_URL = os.environ.get("DATABASE_URL")
+# DATABASE
 
-if DATABASE_URL:
-    DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL)
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'vessel_market_db',
-            'USER': 'postgres',
-            'PASSWORD': 'YOUR_LOCAL_PASSWORD',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
-    }
+DATABASES = {
+    'default': dj_database_url.parse(
+        os.environ.get("DATABASE_URL")
+    )
+}
 
-# Password validation
+# PASSWORD VALIDATION
+
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
-# Internationalization
+# INTERNATIONALIZATION
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -113,29 +112,34 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files
+# STATIC FILES
+
 STATIC_URL = '/static/'
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_STORAGE = (
     'whitenoise.storage.CompressedManifestStaticFilesStorage'
 )
 
-# Default primary key field type
+# DEFAULT PRIMARY KEY
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
 
-    # Add your Vercel URL later
-    # 'https://your-app.vercel.app',
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+
+    # Add after Vercel deployment:
+    # "https://your-app.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-# DRF
+# DJANGO REST FRAMEWORK
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
