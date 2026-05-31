@@ -136,6 +136,10 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://vessle-market-analysis-czvz.vercel.app",
+]
+
 # DJANGO REST FRAMEWORK
 
 REST_FRAMEWORK = {
