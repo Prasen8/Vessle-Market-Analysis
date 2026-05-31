@@ -1,0 +1,61 @@
+.register-card {
+  max-width: 440px;
+}
+
+.reg-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.required {
+  color: #E24B4A;
+  font-size: 13px;
+}
+
+.field-error {
+  display: block;
+  color: #E24B4A;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.form-field input.has-error {
+  border-color: #E24B4A;
+}
+
+.register-info {
+  margin-top: auto;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255,255,255,0.65);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.info-icon {
+  width: 20px;
+  height: 20px;
+  background: rgba(29,158,117,0.25);
+  color: #1D9E75;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.info-item strong {
+  color: #fff;
+}
